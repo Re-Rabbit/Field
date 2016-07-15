@@ -1,0 +1,28 @@
+{#
+
+Field Templates.
+
+#}
+
+
+
+{% macro field(default="", value="", type="text", disabled=false, dark=false) %}
+<input
+  class="field {{'field--dark' if dark}}"
+  type="{{type}}"
+  placeholder="{{default}}"
+  value="{{value}}"
+  {{"disabled" if disabled}}
+  
+  />
+{% endmacro %}
+
+
+{% macro area(default="", value="", disabled=false, dark=false) %}
+<textarea
+  class="area {{'area--dark' if dark}}"
+  placeholder="{{default}}"
+  {{"disabled" if disabled}}
+  
+  >{{value}}</textarea>
+{% endmacro %}
