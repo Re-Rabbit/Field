@@ -1,0 +1,10 @@
+{
+    "field-line-height": "1.5",
+    "field-font-size": "14px",
+    "field-border-radius": "4px",
+    "field-border-color": "#d9d9d9",
+    "field-color": "#673ab7",
+    "area-min-col": "8",
+
+    "export-default": true
+}

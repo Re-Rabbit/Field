@@ -8,18 +8,19 @@
 
 
 /// Vars.
+json('manifest.json')
 
 // public.
-$field-lh   = 1.5
-$field-fz   = 14px
-$field-bdrz = 4px
-$field-bdc  = #d9d9d9
-$field-pc   = #673ab7 //#57c5f7
-$area-col   = 8
+$field-lh   = field-line-height
+$field-fz   = field-font-size
+$field-bdrz = field-border-radius
+$field-bdc  = field-border-color
+$field-pc   = field-color //#673ab7 //#57c5f7
+$area-col   = area-min-col
 
 // disabled.
 $field-bgc-disabled = #eee
-$field-cc-disabled = #bbb
+$field-cc-disabled  = #bbb
 
 // dark theme.
 $field-bgc-dark = #2a2a2a
@@ -41,4 +42,6 @@ field-preset()
   w 100%
 
 
-@require "_default"
+/// Includes all the styles.
+
+@require "styles/*"

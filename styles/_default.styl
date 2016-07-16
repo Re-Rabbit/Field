@@ -8,8 +8,7 @@ field()
   bdrz $field-bdrz
   pad 0.3em 0.8em
 
-  trans border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s,
-        box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s
+  transition border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s
   
   &:focus
   &:hover
@@ -17,7 +16,7 @@ field()
 
   &:focus
     outline 0
-    shadow 0 0 0 2px rgba($field-pc, 0.16) //rgba(45, 183, 245, 0.2)
+    //shadow 0 0 0 2px rgba($field-pc, 0.16) //rgba(45, 183, 245, 0.2)
 
   &[disabled]
     bg  $field-bgc-disabled
