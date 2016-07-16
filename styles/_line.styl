@@ -1,0 +1,23 @@
+/// Field line only
+
+field-line()
+  field-reset()
+  field-preset()
+
+  bd1($field-bdc, bdb)
+  pad 0.3em 0.8em
+
+  transition border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s
+
+  &:focus
+  &:hover
+    bdc $field-pc
+
+  &:focus
+    outline 0
+
+  &[disabled]
+    bg  $field-bgc-disabled
+    cc  $field-cc-disabled
+    bdc $field-bdc
+    cur not-allowed

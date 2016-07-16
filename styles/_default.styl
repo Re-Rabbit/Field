@@ -27,9 +27,9 @@ field()
 
 
 area()
-  field()
-  mih $area-col * 1em
-  resize no
+  &-area
+    mih $area-col * 1em
+    resize no
 
 
 /// Dark theme.cd 
@@ -45,9 +45,6 @@ field-dark()
   &:focus
     shadow 0 0 0 2px rgba($field-bgc-dark, 0.16)
 
-area-dark()
-  field-dark()
-
 
 /// Exports.
     
@@ -55,14 +52,10 @@ field-export($se = "field")
   .{$se}
     field()
 
-area-export($se = "area")
+area-export($se = "field")
   .{$se}
-    field()
+    area()
 
 field-dark-export($se = "field--dark")
   .{$se}
     field-dark-theme()
-
-area-dark-export($se = "area--dark")
-  .{$se}
-    area-dark-theme()

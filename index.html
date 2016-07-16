@@ -1,24 +1,58 @@
+{# -*- mode: jinja2 -*- #}
+
 {#
 
 Field Templates.
 
 #}
 
+{% macro _field(opts) %}
+
+  {% set type = opts.type | default("text") %}
+  {% set placeholder = opts.default %}
+  {% set value = opts.value %}
+  {% set classNames = opts.classNames | default([]) %}
+  {% set disabled = opts.disabled | default(false) %}
+  {% set dark = opts.dark | default(false) %}
+  
+
+  {% if type != "area" %}
+    <input
+      class="field {{"field--dark" if dark}} {{classNames | join(" ") }}"
+      type="{{type}}"
+      placeholder="{{placeholder}}"
+      value="{{value}}"
+      {{"disabled" if disabled}} />
+  {% else %}
+    <textarea
+      class="field field-area {{"field--dark" if dark}} {{classNames | join(" ") }}"
+      placeholder="{{placeholder}}"
+      {{"disabled" if disabled}} >{{value}}</textarea>
+  {% endif %}
+    
+{% endmacro %}
 
 
-{% macro field(default="", value="", type="text", disabled=false, dark=false) %}
+{# Field default. #}
+
+{% macro field(opts) %}
+  {{ _field(opts) }}
+{% endmacro %}
+
+
+{% macro area(opts) %}
+  {% set options = opts | assign({ type: "area" }) %}
+  {{ _field(options) }}
+{% endmacro %}
+
+
+{# Field line only. #}
+
+{% macro fieldLine(default="", value="", type="text", disabled=false, dark=false) %}
 <input
-  class="field {{'field--dark' if dark}}"
+  class="field {{"field--dark" if dark}}"
   type="{{type}}"
   placeholder="{{default}}"
   value="{{value}}"
   {{"disabled" if disabled}} />
-{% endmacro %}
-
-
-{% macro area(default="", value="", disabled=false, dark=false) %}
-<textarea
-  class="area {{'area--dark' if dark}}"
-  placeholder="{{default}}"
-  {{"disabled" if disabled}} >{{value}}</textarea>
 {% endmacro %}
