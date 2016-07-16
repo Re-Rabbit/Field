@@ -42,6 +42,31 @@ field-preset()
   w 100%
 
 
+field-basic()
+  field-reset()
+  field-preset()
+
+  &:focus
+    outline 0
+
+  &[disabled]
+    cc  $field-cc-disabled
+    cur not-allowed
+
+
+area()
+  &-area
+    mih $area-col * 1em
+    resize no
+
+/// Call the default exports.
+
+field-basic-export(se = "field")
+  .{se}
+    field-basic()
+    area()
+
+
 /// Includes all the styles.
 
 @require "styles/*"

@@ -6,6 +6,9 @@ Field Templates.
 
 #}
 
+
+{# Field seed. #}
+
 {% macro _field(opts) %}
 
   {% set type = opts.type | default("text") %}
@@ -33,26 +36,25 @@ Field Templates.
 {% endmacro %}
 
 
+
 {# Field default. #}
 
 {% macro field(opts) %}
-  {{ _field(opts) }}
-{% endmacro %}
-
-
-{% macro area(opts) %}
-  {% set options = opts | assign({ type: "area" }) %}
+  {% set options = opts | assign({ classNames: ["field-default"] }) %}
   {{ _field(options) }}
 {% endmacro %}
 
 
+{% macro area(opts) %}
+  {% set options = opts | assign({ classNames: ["field-default"], type: "area" }) %}
+  {{ _field(options) }}
+{% endmacro %}
+
+
+
 {# Field line only. #}
 
-{% macro fieldLine(default="", value="", type="text", disabled=false, dark=false) %}
-<input
-  class="field {{"field--dark" if dark}}"
-  type="{{type}}"
-  placeholder="{{default}}"
-  value="{{value}}"
-  {{"disabled" if disabled}} />
+{% macro fieldLine(opts) %}
+  {% set options = opts | assign({ classNames: ["field-line"] }) %}
+  {{ _field(options) }}
 {% endmacro %}

@@ -1,8 +1,6 @@
 /// Field default
 
-field()
-  field-reset()
-  field-preset()
+field-default()
 
   bd1($field-bdc)
   bdrz $field-bdrz
@@ -13,28 +11,18 @@ field()
   &:focus
   &:hover
     bdc $field-pc
-
-  &:focus
-    outline 0
-    //shadow 0 0 0 2px rgba($field-pc, 0.16) //rgba(45, 183, 245, 0.2)
+      
+  //shadow 0 0 0 2px rgba($field-pc, 0.16) //rgba(45, 183, 245, 0.2)
 
   &[disabled]
     bg  $field-bgc-disabled
-    cc  $field-cc-disabled
     bdc $field-bdc
-    cur not-allowed
-    shadow no
 
 
-area()
-  &-area
-    mih $area-col * 1em
-    resize no
 
+/// Dark theme.
 
-/// Dark theme.cd 
-
-field-dark()
+field-default-dark()
   bd1($field-bgc-dark)
   bg $field-bgc-dark
   cc $field-cc-dark
@@ -42,20 +30,14 @@ field-dark()
   &:hover
   &:focus
     bdc $field-bgc-dark
-  &:focus
-    shadow 0 0 0 2px rgba($field-bgc-dark, 0.16)
 
 
 /// Exports.
     
-field-export($se = "field")
+field-export($se = "field-default")
   .{$se}
-    field()
+    field-default()
 
-area-export($se = "field")
-  .{$se}
-    area()
-
-field-dark-export($se = "field--dark")
+field-dark-export($se = "field-default--dark")
   .{$se}
     field-dark-theme()
