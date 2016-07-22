@@ -39,6 +39,7 @@ field-preset()
   box bdbox
   lh $field-lh
   fz $field-fz
+  dis ib
   w 100%
 
 
@@ -59,12 +60,18 @@ area()
     mih $area-col * 1em
     resize no
 
+trigger()
+  cur ptr
+  &-placeholder
+    cc #d3d3d3
+
 /// Call the default exports.
 
 field-basic-export(se = "field")
   .{se}
     field-basic()
     area()
+    trigger()
 
 
 /// Includes all the styles.

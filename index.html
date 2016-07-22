@@ -19,18 +19,34 @@ Field Templates.
   {% set dark = opts.dark | default(false) %}
   
 
-  {% if type != "area" %}
+  {% if type == "area" %}
+    <textarea
+      class="field field-area {{"field--dark" if dark}} {{classNames | join(" ") }}"
+      placeholder="{{placeholder}}"
+      {{"disabled" if disabled}}
+      >{{value}}</textarea>
+  
+  {% elif type == "trigger" %}
+    <div
+      class="field {{"field--dark" if dark}} {{classNames | join(" ") }}"
+      ><span class="field-placeholder">{{placeholder}}</span></div>
+  {#
+  {% elif type == "trigger" %}
+    <input
+      class="field {{"field--dark" if dark}} {{classNames | join(" ") }}"
+      type="{{type}}"
+      placeholder="{{placeholder}}"
+      value="{{value}}"
+      readonly="true"
+      {{"disabled" if disabled}} />
+  #}
+  {% else %}
     <input
       class="field {{"field--dark" if dark}} {{classNames | join(" ") }}"
       type="{{type}}"
       placeholder="{{placeholder}}"
       value="{{value}}"
       {{"disabled" if disabled}} />
-  {% else %}
-    <textarea
-      class="field field-area {{"field--dark" if dark}} {{classNames | join(" ") }}"
-      placeholder="{{placeholder}}"
-      {{"disabled" if disabled}} >{{value}}</textarea>
   {% endif %}
     
 {% endmacro %}
@@ -47,6 +63,12 @@ Field Templates.
 
 {% macro area(opts) %}
   {% set options = opts | assign({ classNames: ["field-default"], type: "area" }) %}
+  {{ _field(options) }}
+{% endmacro %}
+
+
+{% macro trigger(opts) %}
+  {% set options = opts | assign({ type: "trigger" }) %}
   {{ _field(options) }}
 {% endmacro %}
 
